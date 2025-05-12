@@ -38,11 +38,12 @@ export default class TenantService {
         const tenant = await prisma.tenant.findUnique({
             where: {
                 id,
+                password: validData.old_password,
             },
         });
 
         if (!tenant) {
-            throw new NotFoundException("Tenant not found");
+            throw new NotFoundException("Old password is incorrect");
         }
 
         const [isEmailExist, isPhoneExist] = await Promise.all([
@@ -72,6 +73,7 @@ export default class TenantService {
                 name: data.name,
                 email: data.email,
                 phoneNumber: data.phone_number,
+                password: data.new_password,
             },
         });
     }

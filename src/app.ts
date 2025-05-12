@@ -2,6 +2,8 @@ import express, { ErrorRequestHandler } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import authRouter from "./routes/auth.routes";
+import managerRouter from "./routes/manager.route";
+import tenantRoute from "./routes/tenant.route";
 import dotenv from "dotenv";
 import { errorMiddleware } from "./middlewares/error.middleware";
 import authMiddleware from "./middlewares/auth.middleware";
@@ -20,7 +22,8 @@ app.use(helmet());
 const prefixRoute = `api/${process.env.API_VERSION || "v1"}`;
 
 app.use("/api/v1", authRouter);
-app.use("/api/v1/auth", authMiddleware([role.tenant]),authRouter);
+app.use("/api/v1/tenants", authMiddleware([role.tenant]),tenantRoute);
+app.use("/api/v1/managers", authMiddleware([role.manager]), managerRouter);
 
 app.use(errorMiddleware)
 

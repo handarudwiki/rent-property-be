@@ -1538,6 +1538,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type ManagerCountOutputType
+   */
+
+  export type ManagerCountOutputType = {
+    properties: number
+  }
+
+  export type ManagerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    properties?: boolean | ManagerCountOutputTypeCountPropertiesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ManagerCountOutputType without action
+   */
+  export type ManagerCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ManagerCountOutputType
+     */
+    select?: ManagerCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ManagerCountOutputType without action
+   */
+  export type ManagerCountOutputTypeCountPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PropertyWhereInput
+  }
+
+
+  /**
    * Count Type TenantCountOutputType
    */
 
@@ -3041,6 +3072,8 @@ export namespace Prisma {
     password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    properties?: boolean | Manager$propertiesArgs<ExtArgs>
+    _count?: boolean | ManagerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["manager"]>
 
   export type ManagerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3074,10 +3107,18 @@ export namespace Prisma {
   }
 
   export type ManagerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phoneNumber" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["manager"]>
+  export type ManagerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    properties?: boolean | Manager$propertiesArgs<ExtArgs>
+    _count?: boolean | ManagerCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ManagerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ManagerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $ManagerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Manager"
-    objects: {}
+    objects: {
+      properties: Prisma.$PropertyPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -3480,6 +3521,7 @@ export namespace Prisma {
    */
   export interface Prisma__ManagerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    properties<T extends Manager$propertiesArgs<ExtArgs> = {}>(args?: Subset<T, Manager$propertiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3533,6 +3575,10 @@ export namespace Prisma {
      */
     omit?: ManagerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ManagerInclude<ExtArgs> | null
+    /**
      * Filter, which Manager to fetch.
      */
     where: ManagerWhereUniqueInput
@@ -3551,6 +3597,10 @@ export namespace Prisma {
      */
     omit?: ManagerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ManagerInclude<ExtArgs> | null
+    /**
      * Filter, which Manager to fetch.
      */
     where: ManagerWhereUniqueInput
@@ -3568,6 +3618,10 @@ export namespace Prisma {
      * Omit specific fields from the Manager
      */
     omit?: ManagerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ManagerInclude<ExtArgs> | null
     /**
      * Filter, which Manager to fetch.
      */
@@ -3617,6 +3671,10 @@ export namespace Prisma {
      */
     omit?: ManagerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ManagerInclude<ExtArgs> | null
+    /**
      * Filter, which Manager to fetch.
      */
     where?: ManagerWhereInput
@@ -3665,6 +3723,10 @@ export namespace Prisma {
      */
     omit?: ManagerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ManagerInclude<ExtArgs> | null
+    /**
      * Filter, which Managers to fetch.
      */
     where?: ManagerWhereInput
@@ -3707,6 +3769,10 @@ export namespace Prisma {
      * Omit specific fields from the Manager
      */
     omit?: ManagerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ManagerInclude<ExtArgs> | null
     /**
      * The data needed to create a Manager.
      */
@@ -3755,6 +3821,10 @@ export namespace Prisma {
      * Omit specific fields from the Manager
      */
     omit?: ManagerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ManagerInclude<ExtArgs> | null
     /**
      * The data needed to update a Manager.
      */
@@ -3822,6 +3892,10 @@ export namespace Prisma {
      */
     omit?: ManagerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ManagerInclude<ExtArgs> | null
+    /**
      * The filter to search for the Manager to update in case it exists.
      */
     where: ManagerWhereUniqueInput
@@ -3848,6 +3922,10 @@ export namespace Prisma {
      */
     omit?: ManagerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ManagerInclude<ExtArgs> | null
+    /**
      * Filter which Manager to delete.
      */
     where: ManagerWhereUniqueInput
@@ -3868,6 +3946,30 @@ export namespace Prisma {
   }
 
   /**
+   * Manager.properties
+   */
+  export type Manager$propertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Property
+     */
+    select?: PropertySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Property
+     */
+    omit?: PropertyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyInclude<ExtArgs> | null
+    where?: PropertyWhereInput
+    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
+    cursor?: PropertyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
+  }
+
+  /**
    * Manager without action
    */
   export type ManagerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3879,6 +3981,10 @@ export namespace Prisma {
      * Omit specific fields from the Manager
      */
     omit?: ManagerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ManagerInclude<ExtArgs> | null
   }
 
 
@@ -5108,6 +5214,7 @@ export namespace Prisma {
     beds: number | null
     baths: number | null
     squareFeet: number | null
+    managerId: string | null
     propertyType: $Enums.PropertyType | null
     averageRating: number | null
     numberOfReviews: number | null
@@ -5128,6 +5235,7 @@ export namespace Prisma {
     beds: number | null
     baths: number | null
     squareFeet: number | null
+    managerId: string | null
     propertyType: $Enums.PropertyType | null
     averageRating: number | null
     numberOfReviews: number | null
@@ -5148,8 +5256,10 @@ export namespace Prisma {
     beds: number
     baths: number
     squareFeet: number
+    managerId: number
     amenities: number
     highlights: number
+    photoUrls: number
     propertyType: number
     averageRating: number
     numberOfReviews: number
@@ -5194,6 +5304,7 @@ export namespace Prisma {
     beds?: true
     baths?: true
     squareFeet?: true
+    managerId?: true
     propertyType?: true
     averageRating?: true
     numberOfReviews?: true
@@ -5214,6 +5325,7 @@ export namespace Prisma {
     beds?: true
     baths?: true
     squareFeet?: true
+    managerId?: true
     propertyType?: true
     averageRating?: true
     numberOfReviews?: true
@@ -5234,8 +5346,10 @@ export namespace Prisma {
     beds?: true
     baths?: true
     squareFeet?: true
+    managerId?: true
     amenities?: true
     highlights?: true
+    photoUrls?: true
     propertyType?: true
     averageRating?: true
     numberOfReviews?: true
@@ -5343,8 +5457,10 @@ export namespace Prisma {
     beds: number
     baths: number
     squareFeet: number
+    managerId: string
     amenities: $Enums.Amenity[]
     highlights: $Enums.Highlight[]
+    photoUrls: string[]
     propertyType: $Enums.PropertyType
     averageRating: number | null
     numberOfReviews: number | null
@@ -5384,8 +5500,10 @@ export namespace Prisma {
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
+    managerId?: boolean
     amenities?: boolean
     highlights?: boolean
+    photoUrls?: boolean
     propertyType?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
@@ -5394,6 +5512,7 @@ export namespace Prisma {
     updatedAt?: boolean
     location?: boolean | LocationDefaultArgs<ExtArgs>
     leases?: boolean | Property$leasesArgs<ExtArgs>
+    manager?: boolean | ManagerDefaultArgs<ExtArgs>
     applications?: boolean | Property$applicationsArgs<ExtArgs>
     tenants?: boolean | Property$tenantsArgs<ExtArgs>
     favoritedBy?: boolean | Property$favoritedByArgs<ExtArgs>
@@ -5412,8 +5531,10 @@ export namespace Prisma {
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
+    managerId?: boolean
     amenities?: boolean
     highlights?: boolean
+    photoUrls?: boolean
     propertyType?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
@@ -5421,6 +5542,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     location?: boolean | LocationDefaultArgs<ExtArgs>
+    manager?: boolean | ManagerDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
   export type PropertySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5435,8 +5557,10 @@ export namespace Prisma {
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
+    managerId?: boolean
     amenities?: boolean
     highlights?: boolean
+    photoUrls?: boolean
     propertyType?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
@@ -5444,6 +5568,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     location?: boolean | LocationDefaultArgs<ExtArgs>
+    manager?: boolean | ManagerDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
   export type PropertySelectScalar = {
@@ -5458,8 +5583,10 @@ export namespace Prisma {
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
+    managerId?: boolean
     amenities?: boolean
     highlights?: boolean
+    photoUrls?: boolean
     propertyType?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
@@ -5468,10 +5595,11 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "pricePerMonth" | "securityDeposit" | "applicationFee" | "isPetsAllowed" | "isParkingIncluded" | "beds" | "baths" | "squareFeet" | "amenities" | "highlights" | "propertyType" | "averageRating" | "numberOfReviews" | "locationId" | "createdAt" | "updatedAt", ExtArgs["result"]["property"]>
+  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "pricePerMonth" | "securityDeposit" | "applicationFee" | "isPetsAllowed" | "isParkingIncluded" | "beds" | "baths" | "squareFeet" | "managerId" | "amenities" | "highlights" | "photoUrls" | "propertyType" | "averageRating" | "numberOfReviews" | "locationId" | "createdAt" | "updatedAt", ExtArgs["result"]["property"]>
   export type PropertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     location?: boolean | LocationDefaultArgs<ExtArgs>
     leases?: boolean | Property$leasesArgs<ExtArgs>
+    manager?: boolean | ManagerDefaultArgs<ExtArgs>
     applications?: boolean | Property$applicationsArgs<ExtArgs>
     tenants?: boolean | Property$tenantsArgs<ExtArgs>
     favoritedBy?: boolean | Property$favoritedByArgs<ExtArgs>
@@ -5479,9 +5607,11 @@ export namespace Prisma {
   }
   export type PropertyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     location?: boolean | LocationDefaultArgs<ExtArgs>
+    manager?: boolean | ManagerDefaultArgs<ExtArgs>
   }
   export type PropertyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     location?: boolean | LocationDefaultArgs<ExtArgs>
+    manager?: boolean | ManagerDefaultArgs<ExtArgs>
   }
 
   export type $PropertyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5489,6 +5619,7 @@ export namespace Prisma {
     objects: {
       location: Prisma.$LocationPayload<ExtArgs>
       leases: Prisma.$LeasePayload<ExtArgs>[]
+      manager: Prisma.$ManagerPayload<ExtArgs>
       applications: Prisma.$ApllicationPayload<ExtArgs>[]
       tenants: Prisma.$TenantPayload<ExtArgs>[]
       favoritedBy: Prisma.$TenantPayload<ExtArgs>[]
@@ -5505,8 +5636,10 @@ export namespace Prisma {
       beds: number
       baths: number
       squareFeet: number
+      managerId: string
       amenities: $Enums.Amenity[]
       highlights: $Enums.Highlight[]
+      photoUrls: string[]
       propertyType: $Enums.PropertyType
       averageRating: number | null
       numberOfReviews: number | null
@@ -5909,6 +6042,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     location<T extends LocationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LocationDefaultArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     leases<T extends Property$leasesArgs<ExtArgs> = {}>(args?: Subset<T, Property$leasesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    manager<T extends ManagerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ManagerDefaultArgs<ExtArgs>>): Prisma__ManagerClient<$Result.GetResult<Prisma.$ManagerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     applications<T extends Property$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, Property$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApllicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     tenants<T extends Property$tenantsArgs<ExtArgs> = {}>(args?: Subset<T, Property$tenantsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     favoritedBy<T extends Property$favoritedByArgs<ExtArgs> = {}>(args?: Subset<T, Property$favoritedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -5952,8 +6086,10 @@ export namespace Prisma {
     readonly beds: FieldRef<"Property", 'Int'>
     readonly baths: FieldRef<"Property", 'Float'>
     readonly squareFeet: FieldRef<"Property", 'Int'>
+    readonly managerId: FieldRef<"Property", 'String'>
     readonly amenities: FieldRef<"Property", 'Amenity[]'>
     readonly highlights: FieldRef<"Property", 'Highlight[]'>
+    readonly photoUrls: FieldRef<"Property", 'String[]'>
     readonly propertyType: FieldRef<"Property", 'PropertyType'>
     readonly averageRating: FieldRef<"Property", 'Float'>
     readonly numberOfReviews: FieldRef<"Property", 'Int'>
@@ -9964,8 +10100,10 @@ export namespace Prisma {
     beds: 'beds',
     baths: 'baths',
     squareFeet: 'squareFeet',
+    managerId: 'managerId',
     amenities: 'amenities',
     highlights: 'highlights',
+    photoUrls: 'photoUrls',
     propertyType: 'propertyType',
     averageRating: 'averageRating',
     numberOfReviews: 'numberOfReviews',
@@ -10278,6 +10416,7 @@ export namespace Prisma {
     password?: StringFilter<"Manager"> | string
     createdAt?: DateTimeFilter<"Manager"> | Date | string
     updatedAt?: DateTimeFilter<"Manager"> | Date | string
+    properties?: PropertyListRelationFilter
   }
 
   export type ManagerOrderByWithRelationInput = {
@@ -10288,6 +10427,7 @@ export namespace Prisma {
     password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    properties?: PropertyOrderByRelationAggregateInput
   }
 
   export type ManagerWhereUniqueInput = Prisma.AtLeast<{
@@ -10301,6 +10441,7 @@ export namespace Prisma {
     password?: StringFilter<"Manager"> | string
     createdAt?: DateTimeFilter<"Manager"> | Date | string
     updatedAt?: DateTimeFilter<"Manager"> | Date | string
+    properties?: PropertyListRelationFilter
   }, "id" | "email" | "phoneNumber">
 
   export type ManagerOrderByWithAggregationInput = {
@@ -10418,8 +10559,10 @@ export namespace Prisma {
     beds?: IntFilter<"Property"> | number
     baths?: FloatFilter<"Property"> | number
     squareFeet?: IntFilter<"Property"> | number
+    managerId?: StringFilter<"Property"> | string
     amenities?: EnumAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
+    photoUrls?: StringNullableListFilter<"Property">
     propertyType?: EnumPropertyTypeFilter<"Property"> | $Enums.PropertyType
     averageRating?: FloatNullableFilter<"Property"> | number | null
     numberOfReviews?: IntNullableFilter<"Property"> | number | null
@@ -10428,6 +10571,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Property"> | Date | string
     location?: XOR<LocationScalarRelationFilter, LocationWhereInput>
     leases?: LeaseListRelationFilter
+    manager?: XOR<ManagerScalarRelationFilter, ManagerWhereInput>
     applications?: ApllicationListRelationFilter
     tenants?: TenantListRelationFilter
     favoritedBy?: TenantListRelationFilter
@@ -10445,8 +10589,10 @@ export namespace Prisma {
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
+    managerId?: SortOrder
     amenities?: SortOrder
     highlights?: SortOrder
+    photoUrls?: SortOrder
     propertyType?: SortOrder
     averageRating?: SortOrderInput | SortOrder
     numberOfReviews?: SortOrderInput | SortOrder
@@ -10455,6 +10601,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     location?: LocationOrderByWithRelationInput
     leases?: LeaseOrderByRelationAggregateInput
+    manager?: ManagerOrderByWithRelationInput
     applications?: ApllicationOrderByRelationAggregateInput
     tenants?: TenantOrderByRelationAggregateInput
     favoritedBy?: TenantOrderByRelationAggregateInput
@@ -10475,8 +10622,10 @@ export namespace Prisma {
     beds?: IntFilter<"Property"> | number
     baths?: FloatFilter<"Property"> | number
     squareFeet?: IntFilter<"Property"> | number
+    managerId?: StringFilter<"Property"> | string
     amenities?: EnumAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
+    photoUrls?: StringNullableListFilter<"Property">
     propertyType?: EnumPropertyTypeFilter<"Property"> | $Enums.PropertyType
     averageRating?: FloatNullableFilter<"Property"> | number | null
     numberOfReviews?: IntNullableFilter<"Property"> | number | null
@@ -10485,6 +10634,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Property"> | Date | string
     location?: XOR<LocationScalarRelationFilter, LocationWhereInput>
     leases?: LeaseListRelationFilter
+    manager?: XOR<ManagerScalarRelationFilter, ManagerWhereInput>
     applications?: ApllicationListRelationFilter
     tenants?: TenantListRelationFilter
     favoritedBy?: TenantListRelationFilter
@@ -10502,8 +10652,10 @@ export namespace Prisma {
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
+    managerId?: SortOrder
     amenities?: SortOrder
     highlights?: SortOrder
+    photoUrls?: SortOrder
     propertyType?: SortOrder
     averageRating?: SortOrderInput | SortOrder
     numberOfReviews?: SortOrderInput | SortOrder
@@ -10532,8 +10684,10 @@ export namespace Prisma {
     beds?: IntWithAggregatesFilter<"Property"> | number
     baths?: FloatWithAggregatesFilter<"Property"> | number
     squareFeet?: IntWithAggregatesFilter<"Property"> | number
+    managerId?: StringWithAggregatesFilter<"Property"> | string
     amenities?: EnumAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
+    photoUrls?: StringNullableListFilter<"Property">
     propertyType?: EnumPropertyTypeWithAggregatesFilter<"Property"> | $Enums.PropertyType
     averageRating?: FloatNullableWithAggregatesFilter<"Property"> | number | null
     numberOfReviews?: IntNullableWithAggregatesFilter<"Property"> | number | null
@@ -10873,6 +11027,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    properties?: PropertyCreateNestedManyWithoutManagerInput
   }
 
   export type ManagerUncheckedCreateInput = {
@@ -10883,6 +11038,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    properties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
   }
 
   export type ManagerUpdateInput = {
@@ -10893,6 +11049,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    properties?: PropertyUpdateManyWithoutManagerNestedInput
   }
 
   export type ManagerUncheckedUpdateInput = {
@@ -10903,6 +11060,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    properties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
   }
 
   export type ManagerCreateManyInput = {
@@ -11035,6 +11193,7 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -11042,6 +11201,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     location: LocationCreateNestedOneWithoutPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
+    manager: ManagerCreateNestedOneWithoutPropertiesInput
     applications?: ApllicationCreateNestedManyWithoutPropertyInput
     tenants?: TenantCreateNestedManyWithoutPropertiesInput
     favoritedBy?: TenantCreateNestedManyWithoutFavoritesInput
@@ -11059,8 +11219,10 @@ export namespace Prisma {
     beds: number
     baths: number
     squareFeet: number
+    managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -11087,6 +11249,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -11094,6 +11257,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    manager?: ManagerUpdateOneRequiredWithoutPropertiesNestedInput
     applications?: ApllicationUpdateManyWithoutPropertyNestedInput
     tenants?: TenantUpdateManyWithoutPropertiesNestedInput
     favoritedBy?: TenantUpdateManyWithoutFavoritesNestedInput
@@ -11111,8 +11275,10 @@ export namespace Prisma {
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
+    managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -11137,8 +11303,10 @@ export namespace Prisma {
     beds: number
     baths: number
     squareFeet: number
+    managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -11161,6 +11329,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -11180,8 +11349,10 @@ export namespace Prisma {
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
+    managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -11683,6 +11854,14 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
   export type EnumPropertyTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.PropertyType | EnumPropertyTypeFieldRefInput<$PrismaModel>
     in?: $Enums.PropertyType[] | ListEnumPropertyTypeFieldRefInput<$PrismaModel>
@@ -11717,6 +11896,11 @@ export namespace Prisma {
     isNot?: LocationWhereInput
   }
 
+  export type ManagerScalarRelationFilter = {
+    is?: ManagerWhereInput
+    isNot?: ManagerWhereInput
+  }
+
   export type TenantListRelationFilter = {
     every?: TenantWhereInput
     some?: TenantWhereInput
@@ -11744,8 +11928,10 @@ export namespace Prisma {
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
+    managerId?: SortOrder
     amenities?: SortOrder
     highlights?: SortOrder
+    photoUrls?: SortOrder
     propertyType?: SortOrder
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
@@ -11777,6 +11963,7 @@ export namespace Prisma {
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
+    managerId?: SortOrder
     propertyType?: SortOrder
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
@@ -11797,6 +11984,7 @@ export namespace Prisma {
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
+    managerId?: SortOrder
     propertyType?: SortOrder
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
@@ -12121,6 +12309,48 @@ export namespace Prisma {
     deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
   }
 
+  export type PropertyCreateNestedManyWithoutManagerInput = {
+    create?: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput> | PropertyCreateWithoutManagerInput[] | PropertyUncheckedCreateWithoutManagerInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutManagerInput | PropertyCreateOrConnectWithoutManagerInput[]
+    createMany?: PropertyCreateManyManagerInputEnvelope
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type PropertyUncheckedCreateNestedManyWithoutManagerInput = {
+    create?: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput> | PropertyCreateWithoutManagerInput[] | PropertyUncheckedCreateWithoutManagerInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutManagerInput | PropertyCreateOrConnectWithoutManagerInput[]
+    createMany?: PropertyCreateManyManagerInputEnvelope
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type PropertyUpdateManyWithoutManagerNestedInput = {
+    create?: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput> | PropertyCreateWithoutManagerInput[] | PropertyUncheckedCreateWithoutManagerInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutManagerInput | PropertyCreateOrConnectWithoutManagerInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutManagerInput | PropertyUpsertWithWhereUniqueWithoutManagerInput[]
+    createMany?: PropertyCreateManyManagerInputEnvelope
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutManagerInput | PropertyUpdateWithWhereUniqueWithoutManagerInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutManagerInput | PropertyUpdateManyWithWhereWithoutManagerInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutManagerNestedInput = {
+    create?: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput> | PropertyCreateWithoutManagerInput[] | PropertyUncheckedCreateWithoutManagerInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutManagerInput | PropertyCreateOrConnectWithoutManagerInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutManagerInput | PropertyUpsertWithWhereUniqueWithoutManagerInput[]
+    createMany?: PropertyCreateManyManagerInputEnvelope
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutManagerInput | PropertyUpdateWithWhereUniqueWithoutManagerInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutManagerInput | PropertyUpdateManyWithWhereWithoutManagerInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
   export type LeaseCreateNestedManyWithoutTenantInput = {
     create?: XOR<LeaseCreateWithoutTenantInput, LeaseUncheckedCreateWithoutTenantInput> | LeaseCreateWithoutTenantInput[] | LeaseUncheckedCreateWithoutTenantInput[]
     connectOrCreate?: LeaseCreateOrConnectWithoutTenantInput | LeaseCreateOrConnectWithoutTenantInput[]
@@ -12289,6 +12519,10 @@ export namespace Prisma {
     set: $Enums.Highlight[]
   }
 
+  export type PropertyCreatephotoUrlsInput = {
+    set: string[]
+  }
+
   export type LocationCreateNestedOneWithoutPropertiesInput = {
     create?: XOR<LocationCreateWithoutPropertiesInput, LocationUncheckedCreateWithoutPropertiesInput>
     connectOrCreate?: LocationCreateOrConnectWithoutPropertiesInput
@@ -12300,6 +12534,12 @@ export namespace Prisma {
     connectOrCreate?: LeaseCreateOrConnectWithoutPropertyInput | LeaseCreateOrConnectWithoutPropertyInput[]
     createMany?: LeaseCreateManyPropertyInputEnvelope
     connect?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
+  }
+
+  export type ManagerCreateNestedOneWithoutPropertiesInput = {
+    create?: XOR<ManagerCreateWithoutPropertiesInput, ManagerUncheckedCreateWithoutPropertiesInput>
+    connectOrCreate?: ManagerCreateOrConnectWithoutPropertiesInput
+    connect?: ManagerWhereUniqueInput
   }
 
   export type ApllicationCreateNestedManyWithoutPropertyInput = {
@@ -12369,6 +12609,11 @@ export namespace Prisma {
     push?: $Enums.Highlight | $Enums.Highlight[]
   }
 
+  export type PropertyUpdatephotoUrlsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
   export type EnumPropertyTypeFieldUpdateOperationsInput = {
     set?: $Enums.PropertyType
   }
@@ -12409,6 +12654,14 @@ export namespace Prisma {
     update?: LeaseUpdateWithWhereUniqueWithoutPropertyInput | LeaseUpdateWithWhereUniqueWithoutPropertyInput[]
     updateMany?: LeaseUpdateManyWithWhereWithoutPropertyInput | LeaseUpdateManyWithWhereWithoutPropertyInput[]
     deleteMany?: LeaseScalarWhereInput | LeaseScalarWhereInput[]
+  }
+
+  export type ManagerUpdateOneRequiredWithoutPropertiesNestedInput = {
+    create?: XOR<ManagerCreateWithoutPropertiesInput, ManagerUncheckedCreateWithoutPropertiesInput>
+    connectOrCreate?: ManagerCreateOrConnectWithoutPropertiesInput
+    upsert?: ManagerUpsertWithoutPropertiesInput
+    connect?: ManagerWhereUniqueInput
+    update?: XOR<XOR<ManagerUpdateToOneWithWhereWithoutPropertiesInput, ManagerUpdateWithoutPropertiesInput>, ManagerUncheckedUpdateWithoutPropertiesInput>
   }
 
   export type ApllicationUpdateManyWithoutPropertyNestedInput = {
@@ -12867,12 +13120,14 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     leases?: LeaseCreateNestedManyWithoutPropertyInput
+    manager: ManagerCreateNestedOneWithoutPropertiesInput
     applications?: ApllicationCreateNestedManyWithoutPropertyInput
     tenants?: TenantCreateNestedManyWithoutPropertiesInput
     favoritedBy?: TenantCreateNestedManyWithoutFavoritesInput
@@ -12890,8 +13145,10 @@ export namespace Prisma {
     beds: number
     baths: number
     squareFeet: number
+    managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -12944,14 +13201,96 @@ export namespace Prisma {
     beds?: IntFilter<"Property"> | number
     baths?: FloatFilter<"Property"> | number
     squareFeet?: IntFilter<"Property"> | number
+    managerId?: StringFilter<"Property"> | string
     amenities?: EnumAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
+    photoUrls?: StringNullableListFilter<"Property">
     propertyType?: EnumPropertyTypeFilter<"Property"> | $Enums.PropertyType
     averageRating?: FloatNullableFilter<"Property"> | number | null
     numberOfReviews?: IntNullableFilter<"Property"> | number | null
     locationId?: StringFilter<"Property"> | string
     createdAt?: DateTimeFilter<"Property"> | Date | string
     updatedAt?: DateTimeFilter<"Property"> | Date | string
+  }
+
+  export type PropertyCreateWithoutManagerInput = {
+    id?: string
+    name: string
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    propertyType: $Enums.PropertyType
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    location: LocationCreateNestedOneWithoutPropertiesInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
+    applications?: ApllicationCreateNestedManyWithoutPropertyInput
+    tenants?: TenantCreateNestedManyWithoutPropertiesInput
+    favoritedBy?: TenantCreateNestedManyWithoutFavoritesInput
+  }
+
+  export type PropertyUncheckedCreateWithoutManagerInput = {
+    id?: string
+    name: string
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    propertyType: $Enums.PropertyType
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    locationId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    applications?: ApllicationUncheckedCreateNestedManyWithoutPropertyInput
+    tenants?: TenantUncheckedCreateNestedManyWithoutPropertiesInput
+    favoritedBy?: TenantUncheckedCreateNestedManyWithoutFavoritesInput
+  }
+
+  export type PropertyCreateOrConnectWithoutManagerInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput>
+  }
+
+  export type PropertyCreateManyManagerInputEnvelope = {
+    data: PropertyCreateManyManagerInput | PropertyCreateManyManagerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PropertyUpsertWithWhereUniqueWithoutManagerInput = {
+    where: PropertyWhereUniqueInput
+    update: XOR<PropertyUpdateWithoutManagerInput, PropertyUncheckedUpdateWithoutManagerInput>
+    create: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput>
+  }
+
+  export type PropertyUpdateWithWhereUniqueWithoutManagerInput = {
+    where: PropertyWhereUniqueInput
+    data: XOR<PropertyUpdateWithoutManagerInput, PropertyUncheckedUpdateWithoutManagerInput>
+  }
+
+  export type PropertyUpdateManyWithWhereWithoutManagerInput = {
+    where: PropertyScalarWhereInput
+    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutManagerInput>
   }
 
   export type LeaseCreateWithoutTenantInput = {
@@ -13030,6 +13369,7 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13037,6 +13377,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     location: LocationCreateNestedOneWithoutPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
+    manager: ManagerCreateNestedOneWithoutPropertiesInput
     applications?: ApllicationCreateNestedManyWithoutPropertyInput
     favoritedBy?: TenantCreateNestedManyWithoutFavoritesInput
   }
@@ -13053,8 +13394,10 @@ export namespace Prisma {
     beds: number
     baths: number
     squareFeet: number
+    managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13085,6 +13428,7 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13092,6 +13436,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     location: LocationCreateNestedOneWithoutPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
+    manager: ManagerCreateNestedOneWithoutPropertiesInput
     applications?: ApllicationCreateNestedManyWithoutPropertyInput
     tenants?: TenantCreateNestedManyWithoutPropertiesInput
   }
@@ -13108,8 +13453,10 @@ export namespace Prisma {
     beds: number
     baths: number
     squareFeet: number
+    managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13283,6 +13630,31 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ManagerCreateWithoutPropertiesInput = {
+    id?: string
+    name: string
+    email: string
+    phoneNumber: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ManagerUncheckedCreateWithoutPropertiesInput = {
+    id?: string
+    name: string
+    email: string
+    phoneNumber: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ManagerCreateOrConnectWithoutPropertiesInput = {
+    where: ManagerWhereUniqueInput
+    create: XOR<ManagerCreateWithoutPropertiesInput, ManagerUncheckedCreateWithoutPropertiesInput>
+  }
+
   export type ApllicationCreateWithoutPropertyInput = {
     id?: string
     status: $Enums.ApplicationStatus
@@ -13426,6 +13798,37 @@ export namespace Prisma {
     data: XOR<LeaseUpdateManyMutationInput, LeaseUncheckedUpdateManyWithoutPropertyInput>
   }
 
+  export type ManagerUpsertWithoutPropertiesInput = {
+    update: XOR<ManagerUpdateWithoutPropertiesInput, ManagerUncheckedUpdateWithoutPropertiesInput>
+    create: XOR<ManagerCreateWithoutPropertiesInput, ManagerUncheckedCreateWithoutPropertiesInput>
+    where?: ManagerWhereInput
+  }
+
+  export type ManagerUpdateToOneWithWhereWithoutPropertiesInput = {
+    where?: ManagerWhereInput
+    data: XOR<ManagerUpdateWithoutPropertiesInput, ManagerUncheckedUpdateWithoutPropertiesInput>
+  }
+
+  export type ManagerUpdateWithoutPropertiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ManagerUncheckedUpdateWithoutPropertiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type ApllicationUpsertWithWhereUniqueWithoutPropertyInput = {
     where: ApllicationWhereUniqueInput
     update: XOR<ApllicationUpdateWithoutPropertyInput, ApllicationUncheckedUpdateWithoutPropertyInput>
@@ -13501,12 +13904,14 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     location: LocationCreateNestedOneWithoutPropertiesInput
+    manager: ManagerCreateNestedOneWithoutPropertiesInput
     applications?: ApllicationCreateNestedManyWithoutPropertyInput
     tenants?: TenantCreateNestedManyWithoutPropertiesInput
     favoritedBy?: TenantCreateNestedManyWithoutFavoritesInput
@@ -13524,8 +13929,10 @@ export namespace Prisma {
     beds: number
     baths: number
     squareFeet: number
+    managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13630,12 +14037,14 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
+    manager?: ManagerUpdateOneRequiredWithoutPropertiesNestedInput
     applications?: ApllicationUpdateManyWithoutPropertyNestedInput
     tenants?: TenantUpdateManyWithoutPropertiesNestedInput
     favoritedBy?: TenantUpdateManyWithoutFavoritesNestedInput
@@ -13653,8 +14062,10 @@ export namespace Prisma {
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
+    managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -13779,6 +14190,7 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13786,6 +14198,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     location: LocationCreateNestedOneWithoutPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
+    manager: ManagerCreateNestedOneWithoutPropertiesInput
     tenants?: TenantCreateNestedManyWithoutPropertiesInput
     favoritedBy?: TenantCreateNestedManyWithoutFavoritesInput
   }
@@ -13802,8 +14215,10 @@ export namespace Prisma {
     beds: number
     baths: number
     squareFeet: number
+    managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13882,6 +14297,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -13889,6 +14305,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    manager?: ManagerUpdateOneRequiredWithoutPropertiesNestedInput
     tenants?: TenantUpdateManyWithoutPropertiesNestedInput
     favoritedBy?: TenantUpdateManyWithoutFavoritesNestedInput
   }
@@ -13905,8 +14322,10 @@ export namespace Prisma {
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
+    managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -13994,8 +14413,10 @@ export namespace Prisma {
     beds: number
     baths: number
     squareFeet: number
+    managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -14017,12 +14438,14 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    manager?: ManagerUpdateOneRequiredWithoutPropertiesNestedInput
     applications?: ApllicationUpdateManyWithoutPropertyNestedInput
     tenants?: TenantUpdateManyWithoutPropertiesNestedInput
     favoritedBy?: TenantUpdateManyWithoutFavoritesNestedInput
@@ -14040,8 +14463,10 @@ export namespace Prisma {
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
+    managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14065,11 +14490,113 @@ export namespace Prisma {
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
+    managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PropertyCreateManyManagerInput = {
+    id?: string
+    name: string
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    propertyType: $Enums.PropertyType
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    locationId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PropertyUpdateWithoutManagerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    applications?: ApllicationUpdateManyWithoutPropertyNestedInput
+    tenants?: TenantUpdateManyWithoutPropertiesNestedInput
+    favoritedBy?: TenantUpdateManyWithoutFavoritesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutManagerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    applications?: ApllicationUncheckedUpdateManyWithoutPropertyNestedInput
+    tenants?: TenantUncheckedUpdateManyWithoutPropertiesNestedInput
+    favoritedBy?: TenantUncheckedUpdateManyWithoutFavoritesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutManagerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14170,6 +14697,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14177,6 +14705,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    manager?: ManagerUpdateOneRequiredWithoutPropertiesNestedInput
     applications?: ApllicationUpdateManyWithoutPropertyNestedInput
     favoritedBy?: TenantUpdateManyWithoutFavoritesNestedInput
   }
@@ -14193,8 +14722,10 @@ export namespace Prisma {
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
+    managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14218,8 +14749,10 @@ export namespace Prisma {
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
+    managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14242,6 +14775,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14249,6 +14783,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    manager?: ManagerUpdateOneRequiredWithoutPropertiesNestedInput
     applications?: ApllicationUpdateManyWithoutPropertyNestedInput
     tenants?: TenantUpdateManyWithoutPropertiesNestedInput
   }
@@ -14265,8 +14800,10 @@ export namespace Prisma {
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
+    managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14290,8 +14827,10 @@ export namespace Prisma {
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
+    managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null

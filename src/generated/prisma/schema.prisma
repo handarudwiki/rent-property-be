@@ -41,6 +41,8 @@ model Manager {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  properties Property[]
+
   @@map("managers")
 }
 
@@ -76,8 +78,10 @@ model Property {
   beds              Int
   baths             Float
   squareFeet        Int
+  managerId         String
   amenities         Amenity[]
   highlights        Highlight[]
+  photoUrls         String[]
   propertyType      PropertyType
   averageRating     Float?       @default(0)
   numberOfReviews   Int?         @default(0)
@@ -87,6 +91,7 @@ model Property {
 
   location     Location      @relation(fields: [locationId], references: [id])
   leases       Lease[]
+  manager      Manager       @relation(fields: [managerId], references: [id])
   applications Apllication[]
   tenants      Tenant[]      @relation("TenantProperties")
   favoritedBy  Tenant[]      @relation("TenantFavorites")
