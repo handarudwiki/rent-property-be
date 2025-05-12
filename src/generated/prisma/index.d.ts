@@ -1544,11 +1544,15 @@ export namespace Prisma {
   export type TenantCountOutputType = {
     leases: number
     applications: number
+    properties: number
+    favorites: number
   }
 
   export type TenantCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     leases?: boolean | TenantCountOutputTypeCountLeasesArgs
     applications?: boolean | TenantCountOutputTypeCountApplicationsArgs
+    properties?: boolean | TenantCountOutputTypeCountPropertiesArgs
+    favorites?: boolean | TenantCountOutputTypeCountFavoritesArgs
   }
 
   // Custom InputTypes
@@ -1576,6 +1580,20 @@ export namespace Prisma {
     where?: ApllicationWhereInput
   }
 
+  /**
+   * TenantCountOutputType without action
+   */
+  export type TenantCountOutputTypeCountPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PropertyWhereInput
+  }
+
+  /**
+   * TenantCountOutputType without action
+   */
+  export type TenantCountOutputTypeCountFavoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PropertyWhereInput
+  }
+
 
   /**
    * Count Type PropertyCountOutputType
@@ -1584,11 +1602,15 @@ export namespace Prisma {
   export type PropertyCountOutputType = {
     leases: number
     applications: number
+    tenants: number
+    favoritedBy: number
   }
 
   export type PropertyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     leases?: boolean | PropertyCountOutputTypeCountLeasesArgs
     applications?: boolean | PropertyCountOutputTypeCountApplicationsArgs
+    tenants?: boolean | PropertyCountOutputTypeCountTenantsArgs
+    favoritedBy?: boolean | PropertyCountOutputTypeCountFavoritedByArgs
   }
 
   // Custom InputTypes
@@ -1614,6 +1636,20 @@ export namespace Prisma {
    */
   export type PropertyCountOutputTypeCountApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ApllicationWhereInput
+  }
+
+  /**
+   * PropertyCountOutputType without action
+   */
+  export type PropertyCountOutputTypeCountTenantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TenantWhereInput
+  }
+
+  /**
+   * PropertyCountOutputType without action
+   */
+  export type PropertyCountOutputTypeCountFavoritedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TenantWhereInput
   }
 
 
@@ -4028,6 +4064,8 @@ export namespace Prisma {
     updatedAt?: boolean
     leases?: boolean | Tenant$leasesArgs<ExtArgs>
     applications?: boolean | Tenant$applicationsArgs<ExtArgs>
+    properties?: boolean | Tenant$propertiesArgs<ExtArgs>
+    favorites?: boolean | Tenant$favoritesArgs<ExtArgs>
     _count?: boolean | TenantCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tenant"]>
 
@@ -4065,6 +4103,8 @@ export namespace Prisma {
   export type TenantInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     leases?: boolean | Tenant$leasesArgs<ExtArgs>
     applications?: boolean | Tenant$applicationsArgs<ExtArgs>
+    properties?: boolean | Tenant$propertiesArgs<ExtArgs>
+    favorites?: boolean | Tenant$favoritesArgs<ExtArgs>
     _count?: boolean | TenantCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TenantIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -4075,6 +4115,8 @@ export namespace Prisma {
     objects: {
       leases: Prisma.$LeasePayload<ExtArgs>[]
       applications: Prisma.$ApllicationPayload<ExtArgs>[]
+      properties: Prisma.$PropertyPayload<ExtArgs>[]
+      favorites: Prisma.$PropertyPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4480,6 +4522,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     leases<T extends Tenant$leasesArgs<ExtArgs> = {}>(args?: Subset<T, Tenant$leasesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     applications<T extends Tenant$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, Tenant$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApllicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    properties<T extends Tenant$propertiesArgs<ExtArgs> = {}>(args?: Subset<T, Tenant$propertiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    favorites<T extends Tenant$favoritesArgs<ExtArgs> = {}>(args?: Subset<T, Tenant$favoritesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4952,6 +4996,54 @@ export namespace Prisma {
   }
 
   /**
+   * Tenant.properties
+   */
+  export type Tenant$propertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Property
+     */
+    select?: PropertySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Property
+     */
+    omit?: PropertyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyInclude<ExtArgs> | null
+    where?: PropertyWhereInput
+    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
+    cursor?: PropertyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
+  }
+
+  /**
+   * Tenant.favorites
+   */
+  export type Tenant$favoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Property
+     */
+    select?: PropertySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Property
+     */
+    omit?: PropertyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyInclude<ExtArgs> | null
+    where?: PropertyWhereInput
+    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
+    cursor?: PropertyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
+  }
+
+  /**
    * Tenant without action
    */
   export type TenantDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5303,6 +5395,8 @@ export namespace Prisma {
     location?: boolean | LocationDefaultArgs<ExtArgs>
     leases?: boolean | Property$leasesArgs<ExtArgs>
     applications?: boolean | Property$applicationsArgs<ExtArgs>
+    tenants?: boolean | Property$tenantsArgs<ExtArgs>
+    favoritedBy?: boolean | Property$favoritedByArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
@@ -5379,6 +5473,8 @@ export namespace Prisma {
     location?: boolean | LocationDefaultArgs<ExtArgs>
     leases?: boolean | Property$leasesArgs<ExtArgs>
     applications?: boolean | Property$applicationsArgs<ExtArgs>
+    tenants?: boolean | Property$tenantsArgs<ExtArgs>
+    favoritedBy?: boolean | Property$favoritedByArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PropertyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5394,6 +5490,8 @@ export namespace Prisma {
       location: Prisma.$LocationPayload<ExtArgs>
       leases: Prisma.$LeasePayload<ExtArgs>[]
       applications: Prisma.$ApllicationPayload<ExtArgs>[]
+      tenants: Prisma.$TenantPayload<ExtArgs>[]
+      favoritedBy: Prisma.$TenantPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5812,6 +5910,8 @@ export namespace Prisma {
     location<T extends LocationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LocationDefaultArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     leases<T extends Property$leasesArgs<ExtArgs> = {}>(args?: Subset<T, Property$leasesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     applications<T extends Property$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, Property$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApllicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tenants<T extends Property$tenantsArgs<ExtArgs> = {}>(args?: Subset<T, Property$tenantsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    favoritedBy<T extends Property$favoritedByArgs<ExtArgs> = {}>(args?: Subset<T, Property$favoritedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6301,6 +6401,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ApllicationScalarFieldEnum | ApllicationScalarFieldEnum[]
+  }
+
+  /**
+   * Property.tenants
+   */
+  export type Property$tenantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tenant
+     */
+    select?: TenantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tenant
+     */
+    omit?: TenantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TenantInclude<ExtArgs> | null
+    where?: TenantWhereInput
+    orderBy?: TenantOrderByWithRelationInput | TenantOrderByWithRelationInput[]
+    cursor?: TenantWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TenantScalarFieldEnum | TenantScalarFieldEnum[]
+  }
+
+  /**
+   * Property.favoritedBy
+   */
+  export type Property$favoritedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tenant
+     */
+    select?: TenantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tenant
+     */
+    omit?: TenantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TenantInclude<ExtArgs> | null
+    where?: TenantWhereInput
+    orderBy?: TenantOrderByWithRelationInput | TenantOrderByWithRelationInput[]
+    cursor?: TenantWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TenantScalarFieldEnum | TenantScalarFieldEnum[]
   }
 
   /**
@@ -10194,6 +10342,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Tenant"> | Date | string
     leases?: LeaseListRelationFilter
     applications?: ApllicationListRelationFilter
+    properties?: PropertyListRelationFilter
+    favorites?: PropertyListRelationFilter
   }
 
   export type TenantOrderByWithRelationInput = {
@@ -10206,6 +10356,8 @@ export namespace Prisma {
     updatedAt?: SortOrder
     leases?: LeaseOrderByRelationAggregateInput
     applications?: ApllicationOrderByRelationAggregateInput
+    properties?: PropertyOrderByRelationAggregateInput
+    favorites?: PropertyOrderByRelationAggregateInput
   }
 
   export type TenantWhereUniqueInput = Prisma.AtLeast<{
@@ -10221,6 +10373,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Tenant"> | Date | string
     leases?: LeaseListRelationFilter
     applications?: ApllicationListRelationFilter
+    properties?: PropertyListRelationFilter
+    favorites?: PropertyListRelationFilter
   }, "id" | "email" | "phoneNumber">
 
   export type TenantOrderByWithAggregationInput = {
@@ -10275,6 +10429,8 @@ export namespace Prisma {
     location?: XOR<LocationScalarRelationFilter, LocationWhereInput>
     leases?: LeaseListRelationFilter
     applications?: ApllicationListRelationFilter
+    tenants?: TenantListRelationFilter
+    favoritedBy?: TenantListRelationFilter
   }
 
   export type PropertyOrderByWithRelationInput = {
@@ -10300,6 +10456,8 @@ export namespace Prisma {
     location?: LocationOrderByWithRelationInput
     leases?: LeaseOrderByRelationAggregateInput
     applications?: ApllicationOrderByRelationAggregateInput
+    tenants?: TenantOrderByRelationAggregateInput
+    favoritedBy?: TenantOrderByRelationAggregateInput
   }
 
   export type PropertyWhereUniqueInput = Prisma.AtLeast<{
@@ -10328,6 +10486,8 @@ export namespace Prisma {
     location?: XOR<LocationScalarRelationFilter, LocationWhereInput>
     leases?: LeaseListRelationFilter
     applications?: ApllicationListRelationFilter
+    tenants?: TenantListRelationFilter
+    favoritedBy?: TenantListRelationFilter
   }, "id">
 
   export type PropertyOrderByWithAggregationInput = {
@@ -10785,6 +10945,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     leases?: LeaseCreateNestedManyWithoutTenantInput
     applications?: ApllicationCreateNestedManyWithoutTenantInput
+    properties?: PropertyCreateNestedManyWithoutTenantsInput
+    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
   }
 
   export type TenantUncheckedCreateInput = {
@@ -10797,6 +10959,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     leases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
     applications?: ApllicationUncheckedCreateNestedManyWithoutTenantInput
+    properties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
+    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
   }
 
   export type TenantUpdateInput = {
@@ -10809,6 +10973,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUpdateManyWithoutTenantNestedInput
     applications?: ApllicationUpdateManyWithoutTenantNestedInput
+    properties?: PropertyUpdateManyWithoutTenantsNestedInput
+    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
   }
 
   export type TenantUncheckedUpdateInput = {
@@ -10821,6 +10987,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
     applications?: ApllicationUncheckedUpdateManyWithoutTenantNestedInput
+    properties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
+    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
   }
 
   export type TenantCreateManyInput = {
@@ -10875,6 +11043,8 @@ export namespace Prisma {
     location: LocationCreateNestedOneWithoutPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
     applications?: ApllicationCreateNestedManyWithoutPropertyInput
+    tenants?: TenantCreateNestedManyWithoutPropertiesInput
+    favoritedBy?: TenantCreateNestedManyWithoutFavoritesInput
   }
 
   export type PropertyUncheckedCreateInput = {
@@ -10899,6 +11069,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     applications?: ApllicationUncheckedCreateNestedManyWithoutPropertyInput
+    tenants?: TenantUncheckedCreateNestedManyWithoutPropertiesInput
+    favoritedBy?: TenantUncheckedCreateNestedManyWithoutFavoritesInput
   }
 
   export type PropertyUpdateInput = {
@@ -10923,6 +11095,8 @@ export namespace Prisma {
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
     applications?: ApllicationUpdateManyWithoutPropertyNestedInput
+    tenants?: TenantUpdateManyWithoutPropertiesNestedInput
+    favoritedBy?: TenantUpdateManyWithoutFavoritesNestedInput
   }
 
   export type PropertyUncheckedUpdateInput = {
@@ -10947,6 +11121,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     applications?: ApllicationUncheckedUpdateManyWithoutPropertyNestedInput
+    tenants?: TenantUncheckedUpdateManyWithoutPropertiesNestedInput
+    favoritedBy?: TenantUncheckedUpdateManyWithoutFavoritesNestedInput
   }
 
   export type PropertyCreateManyInput = {
@@ -11541,9 +11717,19 @@ export namespace Prisma {
     isNot?: LocationWhereInput
   }
 
+  export type TenantListRelationFilter = {
+    every?: TenantWhereInput
+    some?: TenantWhereInput
+    none?: TenantWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type TenantOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type PropertyCountOrderByAggregateInput = {
@@ -11949,6 +12135,18 @@ export namespace Prisma {
     connect?: ApllicationWhereUniqueInput | ApllicationWhereUniqueInput[]
   }
 
+  export type PropertyCreateNestedManyWithoutTenantsInput = {
+    create?: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput> | PropertyCreateWithoutTenantsInput[] | PropertyUncheckedCreateWithoutTenantsInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutTenantsInput | PropertyCreateOrConnectWithoutTenantsInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type PropertyCreateNestedManyWithoutFavoritedByInput = {
+    create?: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput> | PropertyCreateWithoutFavoritedByInput[] | PropertyUncheckedCreateWithoutFavoritedByInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutFavoritedByInput | PropertyCreateOrConnectWithoutFavoritedByInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
   export type LeaseUncheckedCreateNestedManyWithoutTenantInput = {
     create?: XOR<LeaseCreateWithoutTenantInput, LeaseUncheckedCreateWithoutTenantInput> | LeaseCreateWithoutTenantInput[] | LeaseUncheckedCreateWithoutTenantInput[]
     connectOrCreate?: LeaseCreateOrConnectWithoutTenantInput | LeaseCreateOrConnectWithoutTenantInput[]
@@ -11961,6 +12159,18 @@ export namespace Prisma {
     connectOrCreate?: ApllicationCreateOrConnectWithoutTenantInput | ApllicationCreateOrConnectWithoutTenantInput[]
     createMany?: ApllicationCreateManyTenantInputEnvelope
     connect?: ApllicationWhereUniqueInput | ApllicationWhereUniqueInput[]
+  }
+
+  export type PropertyUncheckedCreateNestedManyWithoutTenantsInput = {
+    create?: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput> | PropertyCreateWithoutTenantsInput[] | PropertyUncheckedCreateWithoutTenantsInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutTenantsInput | PropertyCreateOrConnectWithoutTenantsInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type PropertyUncheckedCreateNestedManyWithoutFavoritedByInput = {
+    create?: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput> | PropertyCreateWithoutFavoritedByInput[] | PropertyUncheckedCreateWithoutFavoritedByInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutFavoritedByInput | PropertyCreateOrConnectWithoutFavoritedByInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
   }
 
   export type LeaseUpdateManyWithoutTenantNestedInput = {
@@ -11991,6 +12201,32 @@ export namespace Prisma {
     deleteMany?: ApllicationScalarWhereInput | ApllicationScalarWhereInput[]
   }
 
+  export type PropertyUpdateManyWithoutTenantsNestedInput = {
+    create?: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput> | PropertyCreateWithoutTenantsInput[] | PropertyUncheckedCreateWithoutTenantsInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutTenantsInput | PropertyCreateOrConnectWithoutTenantsInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutTenantsInput | PropertyUpsertWithWhereUniqueWithoutTenantsInput[]
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutTenantsInput | PropertyUpdateWithWhereUniqueWithoutTenantsInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutTenantsInput | PropertyUpdateManyWithWhereWithoutTenantsInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type PropertyUpdateManyWithoutFavoritedByNestedInput = {
+    create?: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput> | PropertyCreateWithoutFavoritedByInput[] | PropertyUncheckedCreateWithoutFavoritedByInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutFavoritedByInput | PropertyCreateOrConnectWithoutFavoritedByInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutFavoritedByInput | PropertyUpsertWithWhereUniqueWithoutFavoritedByInput[]
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutFavoritedByInput | PropertyUpdateWithWhereUniqueWithoutFavoritedByInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutFavoritedByInput | PropertyUpdateManyWithWhereWithoutFavoritedByInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
   export type LeaseUncheckedUpdateManyWithoutTenantNestedInput = {
     create?: XOR<LeaseCreateWithoutTenantInput, LeaseUncheckedCreateWithoutTenantInput> | LeaseCreateWithoutTenantInput[] | LeaseUncheckedCreateWithoutTenantInput[]
     connectOrCreate?: LeaseCreateOrConnectWithoutTenantInput | LeaseCreateOrConnectWithoutTenantInput[]
@@ -12017,6 +12253,32 @@ export namespace Prisma {
     update?: ApllicationUpdateWithWhereUniqueWithoutTenantInput | ApllicationUpdateWithWhereUniqueWithoutTenantInput[]
     updateMany?: ApllicationUpdateManyWithWhereWithoutTenantInput | ApllicationUpdateManyWithWhereWithoutTenantInput[]
     deleteMany?: ApllicationScalarWhereInput | ApllicationScalarWhereInput[]
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutTenantsNestedInput = {
+    create?: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput> | PropertyCreateWithoutTenantsInput[] | PropertyUncheckedCreateWithoutTenantsInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutTenantsInput | PropertyCreateOrConnectWithoutTenantsInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutTenantsInput | PropertyUpsertWithWhereUniqueWithoutTenantsInput[]
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutTenantsInput | PropertyUpdateWithWhereUniqueWithoutTenantsInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutTenantsInput | PropertyUpdateManyWithWhereWithoutTenantsInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput = {
+    create?: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput> | PropertyCreateWithoutFavoritedByInput[] | PropertyUncheckedCreateWithoutFavoritedByInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutFavoritedByInput | PropertyCreateOrConnectWithoutFavoritedByInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutFavoritedByInput | PropertyUpsertWithWhereUniqueWithoutFavoritedByInput[]
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutFavoritedByInput | PropertyUpdateWithWhereUniqueWithoutFavoritedByInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutFavoritedByInput | PropertyUpdateManyWithWhereWithoutFavoritedByInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
   }
 
   export type PropertyCreateamenitiesInput = {
@@ -12047,6 +12309,18 @@ export namespace Prisma {
     connect?: ApllicationWhereUniqueInput | ApllicationWhereUniqueInput[]
   }
 
+  export type TenantCreateNestedManyWithoutPropertiesInput = {
+    create?: XOR<TenantCreateWithoutPropertiesInput, TenantUncheckedCreateWithoutPropertiesInput> | TenantCreateWithoutPropertiesInput[] | TenantUncheckedCreateWithoutPropertiesInput[]
+    connectOrCreate?: TenantCreateOrConnectWithoutPropertiesInput | TenantCreateOrConnectWithoutPropertiesInput[]
+    connect?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+  }
+
+  export type TenantCreateNestedManyWithoutFavoritesInput = {
+    create?: XOR<TenantCreateWithoutFavoritesInput, TenantUncheckedCreateWithoutFavoritesInput> | TenantCreateWithoutFavoritesInput[] | TenantUncheckedCreateWithoutFavoritesInput[]
+    connectOrCreate?: TenantCreateOrConnectWithoutFavoritesInput | TenantCreateOrConnectWithoutFavoritesInput[]
+    connect?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+  }
+
   export type LeaseUncheckedCreateNestedManyWithoutPropertyInput = {
     create?: XOR<LeaseCreateWithoutPropertyInput, LeaseUncheckedCreateWithoutPropertyInput> | LeaseCreateWithoutPropertyInput[] | LeaseUncheckedCreateWithoutPropertyInput[]
     connectOrCreate?: LeaseCreateOrConnectWithoutPropertyInput | LeaseCreateOrConnectWithoutPropertyInput[]
@@ -12059,6 +12333,18 @@ export namespace Prisma {
     connectOrCreate?: ApllicationCreateOrConnectWithoutPropertyInput | ApllicationCreateOrConnectWithoutPropertyInput[]
     createMany?: ApllicationCreateManyPropertyInputEnvelope
     connect?: ApllicationWhereUniqueInput | ApllicationWhereUniqueInput[]
+  }
+
+  export type TenantUncheckedCreateNestedManyWithoutPropertiesInput = {
+    create?: XOR<TenantCreateWithoutPropertiesInput, TenantUncheckedCreateWithoutPropertiesInput> | TenantCreateWithoutPropertiesInput[] | TenantUncheckedCreateWithoutPropertiesInput[]
+    connectOrCreate?: TenantCreateOrConnectWithoutPropertiesInput | TenantCreateOrConnectWithoutPropertiesInput[]
+    connect?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+  }
+
+  export type TenantUncheckedCreateNestedManyWithoutFavoritesInput = {
+    create?: XOR<TenantCreateWithoutFavoritesInput, TenantUncheckedCreateWithoutFavoritesInput> | TenantCreateWithoutFavoritesInput[] | TenantUncheckedCreateWithoutFavoritesInput[]
+    connectOrCreate?: TenantCreateOrConnectWithoutFavoritesInput | TenantCreateOrConnectWithoutFavoritesInput[]
+    connect?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -12139,6 +12425,32 @@ export namespace Prisma {
     deleteMany?: ApllicationScalarWhereInput | ApllicationScalarWhereInput[]
   }
 
+  export type TenantUpdateManyWithoutPropertiesNestedInput = {
+    create?: XOR<TenantCreateWithoutPropertiesInput, TenantUncheckedCreateWithoutPropertiesInput> | TenantCreateWithoutPropertiesInput[] | TenantUncheckedCreateWithoutPropertiesInput[]
+    connectOrCreate?: TenantCreateOrConnectWithoutPropertiesInput | TenantCreateOrConnectWithoutPropertiesInput[]
+    upsert?: TenantUpsertWithWhereUniqueWithoutPropertiesInput | TenantUpsertWithWhereUniqueWithoutPropertiesInput[]
+    set?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    disconnect?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    delete?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    connect?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    update?: TenantUpdateWithWhereUniqueWithoutPropertiesInput | TenantUpdateWithWhereUniqueWithoutPropertiesInput[]
+    updateMany?: TenantUpdateManyWithWhereWithoutPropertiesInput | TenantUpdateManyWithWhereWithoutPropertiesInput[]
+    deleteMany?: TenantScalarWhereInput | TenantScalarWhereInput[]
+  }
+
+  export type TenantUpdateManyWithoutFavoritesNestedInput = {
+    create?: XOR<TenantCreateWithoutFavoritesInput, TenantUncheckedCreateWithoutFavoritesInput> | TenantCreateWithoutFavoritesInput[] | TenantUncheckedCreateWithoutFavoritesInput[]
+    connectOrCreate?: TenantCreateOrConnectWithoutFavoritesInput | TenantCreateOrConnectWithoutFavoritesInput[]
+    upsert?: TenantUpsertWithWhereUniqueWithoutFavoritesInput | TenantUpsertWithWhereUniqueWithoutFavoritesInput[]
+    set?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    disconnect?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    delete?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    connect?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    update?: TenantUpdateWithWhereUniqueWithoutFavoritesInput | TenantUpdateWithWhereUniqueWithoutFavoritesInput[]
+    updateMany?: TenantUpdateManyWithWhereWithoutFavoritesInput | TenantUpdateManyWithWhereWithoutFavoritesInput[]
+    deleteMany?: TenantScalarWhereInput | TenantScalarWhereInput[]
+  }
+
   export type LeaseUncheckedUpdateManyWithoutPropertyNestedInput = {
     create?: XOR<LeaseCreateWithoutPropertyInput, LeaseUncheckedCreateWithoutPropertyInput> | LeaseCreateWithoutPropertyInput[] | LeaseUncheckedCreateWithoutPropertyInput[]
     connectOrCreate?: LeaseCreateOrConnectWithoutPropertyInput | LeaseCreateOrConnectWithoutPropertyInput[]
@@ -12165,6 +12477,32 @@ export namespace Prisma {
     update?: ApllicationUpdateWithWhereUniqueWithoutPropertyInput | ApllicationUpdateWithWhereUniqueWithoutPropertyInput[]
     updateMany?: ApllicationUpdateManyWithWhereWithoutPropertyInput | ApllicationUpdateManyWithWhereWithoutPropertyInput[]
     deleteMany?: ApllicationScalarWhereInput | ApllicationScalarWhereInput[]
+  }
+
+  export type TenantUncheckedUpdateManyWithoutPropertiesNestedInput = {
+    create?: XOR<TenantCreateWithoutPropertiesInput, TenantUncheckedCreateWithoutPropertiesInput> | TenantCreateWithoutPropertiesInput[] | TenantUncheckedCreateWithoutPropertiesInput[]
+    connectOrCreate?: TenantCreateOrConnectWithoutPropertiesInput | TenantCreateOrConnectWithoutPropertiesInput[]
+    upsert?: TenantUpsertWithWhereUniqueWithoutPropertiesInput | TenantUpsertWithWhereUniqueWithoutPropertiesInput[]
+    set?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    disconnect?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    delete?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    connect?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    update?: TenantUpdateWithWhereUniqueWithoutPropertiesInput | TenantUpdateWithWhereUniqueWithoutPropertiesInput[]
+    updateMany?: TenantUpdateManyWithWhereWithoutPropertiesInput | TenantUpdateManyWithWhereWithoutPropertiesInput[]
+    deleteMany?: TenantScalarWhereInput | TenantScalarWhereInput[]
+  }
+
+  export type TenantUncheckedUpdateManyWithoutFavoritesNestedInput = {
+    create?: XOR<TenantCreateWithoutFavoritesInput, TenantUncheckedCreateWithoutFavoritesInput> | TenantCreateWithoutFavoritesInput[] | TenantUncheckedCreateWithoutFavoritesInput[]
+    connectOrCreate?: TenantCreateOrConnectWithoutFavoritesInput | TenantCreateOrConnectWithoutFavoritesInput[]
+    upsert?: TenantUpsertWithWhereUniqueWithoutFavoritesInput | TenantUpsertWithWhereUniqueWithoutFavoritesInput[]
+    set?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    disconnect?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    delete?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    connect?: TenantWhereUniqueInput | TenantWhereUniqueInput[]
+    update?: TenantUpdateWithWhereUniqueWithoutFavoritesInput | TenantUpdateWithWhereUniqueWithoutFavoritesInput[]
+    updateMany?: TenantUpdateManyWithWhereWithoutFavoritesInput | TenantUpdateManyWithWhereWithoutFavoritesInput[]
+    deleteMany?: TenantScalarWhereInput | TenantScalarWhereInput[]
   }
 
   export type PropertyCreateNestedOneWithoutLeasesInput = {
@@ -12536,6 +12874,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     leases?: LeaseCreateNestedManyWithoutPropertyInput
     applications?: ApllicationCreateNestedManyWithoutPropertyInput
+    tenants?: TenantCreateNestedManyWithoutPropertiesInput
+    favoritedBy?: TenantCreateNestedManyWithoutFavoritesInput
   }
 
   export type PropertyUncheckedCreateWithoutLocationInput = {
@@ -12559,6 +12899,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     applications?: ApllicationUncheckedCreateNestedManyWithoutPropertyInput
+    tenants?: TenantUncheckedCreateNestedManyWithoutPropertiesInput
+    favoritedBy?: TenantUncheckedCreateNestedManyWithoutFavoritesInput
   }
 
   export type PropertyCreateOrConnectWithoutLocationInput = {
@@ -12674,6 +13016,116 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type PropertyCreateWithoutTenantsInput = {
+    id?: string
+    name: string
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    propertyType: $Enums.PropertyType
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    location: LocationCreateNestedOneWithoutPropertiesInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
+    applications?: ApllicationCreateNestedManyWithoutPropertyInput
+    favoritedBy?: TenantCreateNestedManyWithoutFavoritesInput
+  }
+
+  export type PropertyUncheckedCreateWithoutTenantsInput = {
+    id?: string
+    name: string
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    propertyType: $Enums.PropertyType
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    locationId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    applications?: ApllicationUncheckedCreateNestedManyWithoutPropertyInput
+    favoritedBy?: TenantUncheckedCreateNestedManyWithoutFavoritesInput
+  }
+
+  export type PropertyCreateOrConnectWithoutTenantsInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput>
+  }
+
+  export type PropertyCreateWithoutFavoritedByInput = {
+    id?: string
+    name: string
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    propertyType: $Enums.PropertyType
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    location: LocationCreateNestedOneWithoutPropertiesInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
+    applications?: ApllicationCreateNestedManyWithoutPropertyInput
+    tenants?: TenantCreateNestedManyWithoutPropertiesInput
+  }
+
+  export type PropertyUncheckedCreateWithoutFavoritedByInput = {
+    id?: string
+    name: string
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    propertyType: $Enums.PropertyType
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    locationId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    applications?: ApllicationUncheckedCreateNestedManyWithoutPropertyInput
+    tenants?: TenantUncheckedCreateNestedManyWithoutPropertiesInput
+  }
+
+  export type PropertyCreateOrConnectWithoutFavoritedByInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput>
+  }
+
   export type LeaseUpsertWithWhereUniqueWithoutTenantInput = {
     where: LeaseWhereUniqueInput
     update: XOR<LeaseUpdateWithoutTenantInput, LeaseUncheckedUpdateWithoutTenantInput>
@@ -12732,6 +13184,38 @@ export namespace Prisma {
     applicationDate?: DateTimeFilter<"Apllication"> | Date | string
     createdAt?: DateTimeFilter<"Apllication"> | Date | string
     updatedAt?: DateTimeFilter<"Apllication"> | Date | string
+  }
+
+  export type PropertyUpsertWithWhereUniqueWithoutTenantsInput = {
+    where: PropertyWhereUniqueInput
+    update: XOR<PropertyUpdateWithoutTenantsInput, PropertyUncheckedUpdateWithoutTenantsInput>
+    create: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput>
+  }
+
+  export type PropertyUpdateWithWhereUniqueWithoutTenantsInput = {
+    where: PropertyWhereUniqueInput
+    data: XOR<PropertyUpdateWithoutTenantsInput, PropertyUncheckedUpdateWithoutTenantsInput>
+  }
+
+  export type PropertyUpdateManyWithWhereWithoutTenantsInput = {
+    where: PropertyScalarWhereInput
+    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutTenantsInput>
+  }
+
+  export type PropertyUpsertWithWhereUniqueWithoutFavoritedByInput = {
+    where: PropertyWhereUniqueInput
+    update: XOR<PropertyUpdateWithoutFavoritedByInput, PropertyUncheckedUpdateWithoutFavoritedByInput>
+    create: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput>
+  }
+
+  export type PropertyUpdateWithWhereUniqueWithoutFavoritedByInput = {
+    where: PropertyWhereUniqueInput
+    data: XOR<PropertyUpdateWithoutFavoritedByInput, PropertyUncheckedUpdateWithoutFavoritedByInput>
+  }
+
+  export type PropertyUpdateManyWithWhereWithoutFavoritedByInput = {
+    where: PropertyScalarWhereInput
+    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutFavoritedByInput>
   }
 
   export type LocationCreateWithoutPropertiesInput = {
@@ -12827,6 +13311,68 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type TenantCreateWithoutPropertiesInput = {
+    id?: string
+    name: string
+    email: string
+    phoneNumber: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    leases?: LeaseCreateNestedManyWithoutTenantInput
+    applications?: ApllicationCreateNestedManyWithoutTenantInput
+    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
+  }
+
+  export type TenantUncheckedCreateWithoutPropertiesInput = {
+    id?: string
+    name: string
+    email: string
+    phoneNumber: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    leases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
+    applications?: ApllicationUncheckedCreateNestedManyWithoutTenantInput
+    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
+  }
+
+  export type TenantCreateOrConnectWithoutPropertiesInput = {
+    where: TenantWhereUniqueInput
+    create: XOR<TenantCreateWithoutPropertiesInput, TenantUncheckedCreateWithoutPropertiesInput>
+  }
+
+  export type TenantCreateWithoutFavoritesInput = {
+    id?: string
+    name: string
+    email: string
+    phoneNumber: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    leases?: LeaseCreateNestedManyWithoutTenantInput
+    applications?: ApllicationCreateNestedManyWithoutTenantInput
+    properties?: PropertyCreateNestedManyWithoutTenantsInput
+  }
+
+  export type TenantUncheckedCreateWithoutFavoritesInput = {
+    id?: string
+    name: string
+    email: string
+    phoneNumber: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    leases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
+    applications?: ApllicationUncheckedCreateNestedManyWithoutTenantInput
+    properties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
+  }
+
+  export type TenantCreateOrConnectWithoutFavoritesInput = {
+    where: TenantWhereUniqueInput
+    create: XOR<TenantCreateWithoutFavoritesInput, TenantUncheckedCreateWithoutFavoritesInput>
+  }
+
   export type LocationUpsertWithoutPropertiesInput = {
     update: XOR<LocationUpdateWithoutPropertiesInput, LocationUncheckedUpdateWithoutPropertiesInput>
     create: XOR<LocationCreateWithoutPropertiesInput, LocationUncheckedCreateWithoutPropertiesInput>
@@ -12896,6 +13442,51 @@ export namespace Prisma {
     data: XOR<ApllicationUpdateManyMutationInput, ApllicationUncheckedUpdateManyWithoutPropertyInput>
   }
 
+  export type TenantUpsertWithWhereUniqueWithoutPropertiesInput = {
+    where: TenantWhereUniqueInput
+    update: XOR<TenantUpdateWithoutPropertiesInput, TenantUncheckedUpdateWithoutPropertiesInput>
+    create: XOR<TenantCreateWithoutPropertiesInput, TenantUncheckedCreateWithoutPropertiesInput>
+  }
+
+  export type TenantUpdateWithWhereUniqueWithoutPropertiesInput = {
+    where: TenantWhereUniqueInput
+    data: XOR<TenantUpdateWithoutPropertiesInput, TenantUncheckedUpdateWithoutPropertiesInput>
+  }
+
+  export type TenantUpdateManyWithWhereWithoutPropertiesInput = {
+    where: TenantScalarWhereInput
+    data: XOR<TenantUpdateManyMutationInput, TenantUncheckedUpdateManyWithoutPropertiesInput>
+  }
+
+  export type TenantScalarWhereInput = {
+    AND?: TenantScalarWhereInput | TenantScalarWhereInput[]
+    OR?: TenantScalarWhereInput[]
+    NOT?: TenantScalarWhereInput | TenantScalarWhereInput[]
+    id?: StringFilter<"Tenant"> | string
+    name?: StringFilter<"Tenant"> | string
+    email?: StringFilter<"Tenant"> | string
+    phoneNumber?: StringFilter<"Tenant"> | string
+    password?: StringFilter<"Tenant"> | string
+    createdAt?: DateTimeFilter<"Tenant"> | Date | string
+    updatedAt?: DateTimeFilter<"Tenant"> | Date | string
+  }
+
+  export type TenantUpsertWithWhereUniqueWithoutFavoritesInput = {
+    where: TenantWhereUniqueInput
+    update: XOR<TenantUpdateWithoutFavoritesInput, TenantUncheckedUpdateWithoutFavoritesInput>
+    create: XOR<TenantCreateWithoutFavoritesInput, TenantUncheckedCreateWithoutFavoritesInput>
+  }
+
+  export type TenantUpdateWithWhereUniqueWithoutFavoritesInput = {
+    where: TenantWhereUniqueInput
+    data: XOR<TenantUpdateWithoutFavoritesInput, TenantUncheckedUpdateWithoutFavoritesInput>
+  }
+
+  export type TenantUpdateManyWithWhereWithoutFavoritesInput = {
+    where: TenantScalarWhereInput
+    data: XOR<TenantUpdateManyMutationInput, TenantUncheckedUpdateManyWithoutFavoritesInput>
+  }
+
   export type PropertyCreateWithoutLeasesInput = {
     id?: string
     name: string
@@ -12917,6 +13508,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     location: LocationCreateNestedOneWithoutPropertiesInput
     applications?: ApllicationCreateNestedManyWithoutPropertyInput
+    tenants?: TenantCreateNestedManyWithoutPropertiesInput
+    favoritedBy?: TenantCreateNestedManyWithoutFavoritesInput
   }
 
   export type PropertyUncheckedCreateWithoutLeasesInput = {
@@ -12940,6 +13533,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     applications?: ApllicationUncheckedCreateNestedManyWithoutPropertyInput
+    tenants?: TenantUncheckedCreateNestedManyWithoutPropertiesInput
+    favoritedBy?: TenantUncheckedCreateNestedManyWithoutFavoritesInput
   }
 
   export type PropertyCreateOrConnectWithoutLeasesInput = {
@@ -12956,6 +13551,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     applications?: ApllicationCreateNestedManyWithoutTenantInput
+    properties?: PropertyCreateNestedManyWithoutTenantsInput
+    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
   }
 
   export type TenantUncheckedCreateWithoutLeasesInput = {
@@ -12967,6 +13564,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     applications?: ApllicationUncheckedCreateNestedManyWithoutTenantInput
+    properties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
+    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
   }
 
   export type TenantCreateOrConnectWithoutLeasesInput = {
@@ -13038,6 +13637,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     applications?: ApllicationUpdateManyWithoutPropertyNestedInput
+    tenants?: TenantUpdateManyWithoutPropertiesNestedInput
+    favoritedBy?: TenantUpdateManyWithoutFavoritesNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutLeasesInput = {
@@ -13061,6 +13662,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     applications?: ApllicationUncheckedUpdateManyWithoutPropertyNestedInput
+    tenants?: TenantUncheckedUpdateManyWithoutPropertiesNestedInput
+    favoritedBy?: TenantUncheckedUpdateManyWithoutFavoritesNestedInput
   }
 
   export type TenantUpsertWithoutLeasesInput = {
@@ -13083,6 +13686,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     applications?: ApllicationUpdateManyWithoutTenantNestedInput
+    properties?: PropertyUpdateManyWithoutTenantsNestedInput
+    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutLeasesInput = {
@@ -13094,6 +13699,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     applications?: ApllicationUncheckedUpdateManyWithoutTenantNestedInput
+    properties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
+    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
   }
 
   export type PaymentUpsertWithWhereUniqueWithoutLeaseInput = {
@@ -13136,6 +13743,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     leases?: LeaseCreateNestedManyWithoutTenantInput
+    properties?: PropertyCreateNestedManyWithoutTenantsInput
+    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
   }
 
   export type TenantUncheckedCreateWithoutApplicationsInput = {
@@ -13147,6 +13756,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     leases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
+    properties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
+    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
   }
 
   export type TenantCreateOrConnectWithoutApplicationsInput = {
@@ -13175,6 +13786,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     location: LocationCreateNestedOneWithoutPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
+    tenants?: TenantCreateNestedManyWithoutPropertiesInput
+    favoritedBy?: TenantCreateNestedManyWithoutFavoritesInput
   }
 
   export type PropertyUncheckedCreateWithoutApplicationsInput = {
@@ -13198,6 +13811,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    tenants?: TenantUncheckedCreateNestedManyWithoutPropertiesInput
+    favoritedBy?: TenantUncheckedCreateNestedManyWithoutFavoritesInput
   }
 
   export type PropertyCreateOrConnectWithoutApplicationsInput = {
@@ -13225,6 +13840,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUpdateManyWithoutTenantNestedInput
+    properties?: PropertyUpdateManyWithoutTenantsNestedInput
+    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutApplicationsInput = {
@@ -13236,6 +13853,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
+    properties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
+    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
   }
 
   export type PropertyUpsertWithoutApplicationsInput = {
@@ -13270,6 +13889,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    tenants?: TenantUpdateManyWithoutPropertiesNestedInput
+    favoritedBy?: TenantUpdateManyWithoutFavoritesNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutApplicationsInput = {
@@ -13293,6 +13914,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    tenants?: TenantUncheckedUpdateManyWithoutPropertiesNestedInput
+    favoritedBy?: TenantUncheckedUpdateManyWithoutFavoritesNestedInput
   }
 
   export type LeaseCreateWithoutPaymentsInput = {
@@ -13401,6 +14024,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
     applications?: ApllicationUpdateManyWithoutPropertyNestedInput
+    tenants?: TenantUpdateManyWithoutPropertiesNestedInput
+    favoritedBy?: TenantUpdateManyWithoutFavoritesNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutLocationInput = {
@@ -13424,6 +14049,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     applications?: ApllicationUncheckedUpdateManyWithoutPropertyNestedInput
+    tenants?: TenantUncheckedUpdateManyWithoutPropertiesNestedInput
+    favoritedBy?: TenantUncheckedUpdateManyWithoutFavoritesNestedInput
   }
 
   export type PropertyUncheckedUpdateManyWithoutLocationInput = {
@@ -13529,6 +14156,150 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PropertyUpdateWithoutTenantsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    applications?: ApllicationUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: TenantUpdateManyWithoutFavoritesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutTenantsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    applications?: ApllicationUncheckedUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: TenantUncheckedUpdateManyWithoutFavoritesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutTenantsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PropertyUpdateWithoutFavoritedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    applications?: ApllicationUpdateManyWithoutPropertyNestedInput
+    tenants?: TenantUpdateManyWithoutPropertiesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutFavoritedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    applications?: ApllicationUncheckedUpdateManyWithoutPropertyNestedInput
+    tenants?: TenantUncheckedUpdateManyWithoutPropertiesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutFavoritedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type LeaseCreateManyPropertyInput = {
     id?: string
     startDate: Date | string
@@ -13607,6 +14378,78 @@ export namespace Prisma {
     tenantId?: StringFieldUpdateOperationsInput | string
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
     applicationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TenantUpdateWithoutPropertiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leases?: LeaseUpdateManyWithoutTenantNestedInput
+    applications?: ApllicationUpdateManyWithoutTenantNestedInput
+    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
+  }
+
+  export type TenantUncheckedUpdateWithoutPropertiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
+    applications?: ApllicationUncheckedUpdateManyWithoutTenantNestedInput
+    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
+  }
+
+  export type TenantUncheckedUpdateManyWithoutPropertiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TenantUpdateWithoutFavoritesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leases?: LeaseUpdateManyWithoutTenantNestedInput
+    applications?: ApllicationUpdateManyWithoutTenantNestedInput
+    properties?: PropertyUpdateManyWithoutTenantsNestedInput
+  }
+
+  export type TenantUncheckedUpdateWithoutFavoritesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
+    applications?: ApllicationUncheckedUpdateManyWithoutTenantNestedInput
+    properties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
+  }
+
+  export type TenantUncheckedUpdateManyWithoutFavoritesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

@@ -4,9 +4,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 
-export const generateToken = (userId: string) => {
+export const generateToken = (userId: string, role) => {
     return sign(
-      { userId },
+      { userId, role },
       process.env.JWT_SECRET as string,
     );
   };

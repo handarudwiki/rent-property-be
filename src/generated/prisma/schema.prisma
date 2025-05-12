@@ -58,6 +58,9 @@ model Tenant {
 
   applications Apllication[]
 
+  properties Property[] @relation("TenantProperties")
+  favorites  Property[] @relation("TenantFavorites")
+
   @@map("tenants")
 }
 
@@ -85,6 +88,8 @@ model Property {
   location     Location      @relation(fields: [locationId], references: [id])
   leases       Lease[]
   applications Apllication[]
+  tenants      Tenant[]      @relation("TenantProperties")
+  favoritedBy  Tenant[]      @relation("TenantFavorites")
 
   @@map("properties")
 }

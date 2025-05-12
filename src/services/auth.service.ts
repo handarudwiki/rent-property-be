@@ -95,6 +95,8 @@ export default class AuthService {
                 throw new UnauthorizedException("Email or password is incorrect");
             }
 
+            return generateToken(loggedInUser.id, role.manager);
+
         }else if (validData.role == role.tenant) {
              loggedInUser = await prisma.tenant.findUnique({
                 where: {
@@ -106,10 +108,8 @@ export default class AuthService {
                 throw new UnauthorizedException("Email or password is incorrect");
             }
 
-            return loggedInUser;
+            return generateToken(loggedInUser.id,role.tenant);
         }
 
-
-        return generateToken(loggedInUser?.id!)
     }
 }
