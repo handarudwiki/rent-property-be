@@ -114,7 +114,8 @@ model Lease {
   property Property @relation(fields: [propertyId], references: [id])
   tenant   Tenant   @relation(fields: [tenantId], references: [id])
 
-  payments Payment[]
+  payments     Payment[]
+  applications Apllication[]
 
   @@map("leases")
 }
@@ -125,12 +126,18 @@ model Apllication {
   propertyId      String
   status          ApplicationStatus
   applicationDate DateTime
+  name            String
+  email           String
+  phoneNumber     String
+  message         String?
+  leaseId         String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   tenant   Tenant   @relation(fields: [tenantId], references: [id])
   property Property @relation(fields: [propertyId], references: [id])
+  lease    Lease?   @relation(fields: [leaseId], references: [id])
 
   @@map("applications")
 }

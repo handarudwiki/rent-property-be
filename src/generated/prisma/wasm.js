@@ -195,6 +195,11 @@ exports.Prisma.ApllicationScalarFieldEnum = {
   propertyId: 'propertyId',
   status: 'status',
   applicationDate: 'applicationDate',
+  name: 'name',
+  email: 'email',
+  phoneNumber: 'phoneNumber',
+  message: 'message',
+  leaseId: 'leaseId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
