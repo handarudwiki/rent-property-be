@@ -5259,7 +5259,7 @@ export namespace Prisma {
     managerId: number
     amenities: number
     highlights: number
-    photoUrls: number
+    publicsId: number
     propertyType: number
     averageRating: number
     numberOfReviews: number
@@ -5349,7 +5349,7 @@ export namespace Prisma {
     managerId?: true
     amenities?: true
     highlights?: true
-    photoUrls?: true
+    publicsId?: true
     propertyType?: true
     averageRating?: true
     numberOfReviews?: true
@@ -5460,7 +5460,7 @@ export namespace Prisma {
     managerId: string
     amenities: $Enums.Amenity[]
     highlights: $Enums.Highlight[]
-    photoUrls: string[]
+    publicsId: string[]
     propertyType: $Enums.PropertyType
     averageRating: number | null
     numberOfReviews: number | null
@@ -5503,7 +5503,7 @@ export namespace Prisma {
     managerId?: boolean
     amenities?: boolean
     highlights?: boolean
-    photoUrls?: boolean
+    publicsId?: boolean
     propertyType?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
@@ -5534,7 +5534,7 @@ export namespace Prisma {
     managerId?: boolean
     amenities?: boolean
     highlights?: boolean
-    photoUrls?: boolean
+    publicsId?: boolean
     propertyType?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
@@ -5560,7 +5560,7 @@ export namespace Prisma {
     managerId?: boolean
     amenities?: boolean
     highlights?: boolean
-    photoUrls?: boolean
+    publicsId?: boolean
     propertyType?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
@@ -5586,7 +5586,7 @@ export namespace Prisma {
     managerId?: boolean
     amenities?: boolean
     highlights?: boolean
-    photoUrls?: boolean
+    publicsId?: boolean
     propertyType?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
@@ -5595,7 +5595,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "pricePerMonth" | "securityDeposit" | "applicationFee" | "isPetsAllowed" | "isParkingIncluded" | "beds" | "baths" | "squareFeet" | "managerId" | "amenities" | "highlights" | "photoUrls" | "propertyType" | "averageRating" | "numberOfReviews" | "locationId" | "createdAt" | "updatedAt", ExtArgs["result"]["property"]>
+  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "pricePerMonth" | "securityDeposit" | "applicationFee" | "isPetsAllowed" | "isParkingIncluded" | "beds" | "baths" | "squareFeet" | "managerId" | "amenities" | "highlights" | "publicsId" | "propertyType" | "averageRating" | "numberOfReviews" | "locationId" | "createdAt" | "updatedAt", ExtArgs["result"]["property"]>
   export type PropertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     location?: boolean | LocationDefaultArgs<ExtArgs>
     leases?: boolean | Property$leasesArgs<ExtArgs>
@@ -5639,7 +5639,7 @@ export namespace Prisma {
       managerId: string
       amenities: $Enums.Amenity[]
       highlights: $Enums.Highlight[]
-      photoUrls: string[]
+      publicsId: string[]
       propertyType: $Enums.PropertyType
       averageRating: number | null
       numberOfReviews: number | null
@@ -6089,7 +6089,7 @@ export namespace Prisma {
     readonly managerId: FieldRef<"Property", 'String'>
     readonly amenities: FieldRef<"Property", 'Amenity[]'>
     readonly highlights: FieldRef<"Property", 'Highlight[]'>
-    readonly photoUrls: FieldRef<"Property", 'String[]'>
+    readonly publicsId: FieldRef<"Property", 'String[]'>
     readonly propertyType: FieldRef<"Property", 'PropertyType'>
     readonly averageRating: FieldRef<"Property", 'Float'>
     readonly numberOfReviews: FieldRef<"Property", 'Int'>
@@ -10103,7 +10103,7 @@ export namespace Prisma {
     managerId: 'managerId',
     amenities: 'amenities',
     highlights: 'highlights',
-    photoUrls: 'photoUrls',
+    publicsId: 'publicsId',
     propertyType: 'propertyType',
     averageRating: 'averageRating',
     numberOfReviews: 'numberOfReviews',
@@ -10562,7 +10562,7 @@ export namespace Prisma {
     managerId?: StringFilter<"Property"> | string
     amenities?: EnumAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
-    photoUrls?: StringNullableListFilter<"Property">
+    publicsId?: StringNullableListFilter<"Property">
     propertyType?: EnumPropertyTypeFilter<"Property"> | $Enums.PropertyType
     averageRating?: FloatNullableFilter<"Property"> | number | null
     numberOfReviews?: IntNullableFilter<"Property"> | number | null
@@ -10592,7 +10592,7 @@ export namespace Prisma {
     managerId?: SortOrder
     amenities?: SortOrder
     highlights?: SortOrder
-    photoUrls?: SortOrder
+    publicsId?: SortOrder
     propertyType?: SortOrder
     averageRating?: SortOrderInput | SortOrder
     numberOfReviews?: SortOrderInput | SortOrder
@@ -10625,7 +10625,7 @@ export namespace Prisma {
     managerId?: StringFilter<"Property"> | string
     amenities?: EnumAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
-    photoUrls?: StringNullableListFilter<"Property">
+    publicsId?: StringNullableListFilter<"Property">
     propertyType?: EnumPropertyTypeFilter<"Property"> | $Enums.PropertyType
     averageRating?: FloatNullableFilter<"Property"> | number | null
     numberOfReviews?: IntNullableFilter<"Property"> | number | null
@@ -10655,7 +10655,7 @@ export namespace Prisma {
     managerId?: SortOrder
     amenities?: SortOrder
     highlights?: SortOrder
-    photoUrls?: SortOrder
+    publicsId?: SortOrder
     propertyType?: SortOrder
     averageRating?: SortOrderInput | SortOrder
     numberOfReviews?: SortOrderInput | SortOrder
@@ -10687,7 +10687,7 @@ export namespace Prisma {
     managerId?: StringWithAggregatesFilter<"Property"> | string
     amenities?: EnumAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
-    photoUrls?: StringNullableListFilter<"Property">
+    publicsId?: StringNullableListFilter<"Property">
     propertyType?: EnumPropertyTypeWithAggregatesFilter<"Property"> | $Enums.PropertyType
     averageRating?: FloatNullableWithAggregatesFilter<"Property"> | number | null
     numberOfReviews?: IntNullableWithAggregatesFilter<"Property"> | number | null
@@ -11193,7 +11193,7 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -11222,7 +11222,7 @@ export namespace Prisma {
     managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -11249,7 +11249,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -11278,7 +11278,7 @@ export namespace Prisma {
     managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -11306,7 +11306,7 @@ export namespace Prisma {
     managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -11329,7 +11329,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -11352,7 +11352,7 @@ export namespace Prisma {
     managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -11931,7 +11931,7 @@ export namespace Prisma {
     managerId?: SortOrder
     amenities?: SortOrder
     highlights?: SortOrder
-    photoUrls?: SortOrder
+    publicsId?: SortOrder
     propertyType?: SortOrder
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
@@ -12519,7 +12519,7 @@ export namespace Prisma {
     set: $Enums.Highlight[]
   }
 
-  export type PropertyCreatephotoUrlsInput = {
+  export type PropertyCreatepublicsIdInput = {
     set: string[]
   }
 
@@ -12609,7 +12609,7 @@ export namespace Prisma {
     push?: $Enums.Highlight | $Enums.Highlight[]
   }
 
-  export type PropertyUpdatephotoUrlsInput = {
+  export type PropertyUpdatepublicsIdInput = {
     set?: string[]
     push?: string | string[]
   }
@@ -13120,7 +13120,7 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13148,7 +13148,7 @@ export namespace Prisma {
     managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13204,7 +13204,7 @@ export namespace Prisma {
     managerId?: StringFilter<"Property"> | string
     amenities?: EnumAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
-    photoUrls?: StringNullableListFilter<"Property">
+    publicsId?: StringNullableListFilter<"Property">
     propertyType?: EnumPropertyTypeFilter<"Property"> | $Enums.PropertyType
     averageRating?: FloatNullableFilter<"Property"> | number | null
     numberOfReviews?: IntNullableFilter<"Property"> | number | null
@@ -13227,7 +13227,7 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13254,7 +13254,7 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13369,7 +13369,7 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13397,7 +13397,7 @@ export namespace Prisma {
     managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13428,7 +13428,7 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13456,7 +13456,7 @@ export namespace Prisma {
     managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13904,7 +13904,7 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -13932,7 +13932,7 @@ export namespace Prisma {
     managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -14037,7 +14037,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14065,7 +14065,7 @@ export namespace Prisma {
     managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14190,7 +14190,7 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -14218,7 +14218,7 @@ export namespace Prisma {
     managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -14297,7 +14297,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14325,7 +14325,7 @@ export namespace Prisma {
     managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14416,7 +14416,7 @@ export namespace Prisma {
     managerId: string
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -14438,7 +14438,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14466,7 +14466,7 @@ export namespace Prisma {
     managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14493,7 +14493,7 @@ export namespace Prisma {
     managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14515,7 +14515,7 @@ export namespace Prisma {
     squareFeet: number
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    publicsId?: PropertyCreatepublicsIdInput | string[]
     propertyType: $Enums.PropertyType
     averageRating?: number | null
     numberOfReviews?: number | null
@@ -14538,7 +14538,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14565,7 +14565,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14592,7 +14592,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14697,7 +14697,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14725,7 +14725,7 @@ export namespace Prisma {
     managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14752,7 +14752,7 @@ export namespace Prisma {
     managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14775,7 +14775,7 @@ export namespace Prisma {
     squareFeet?: IntFieldUpdateOperationsInput | number
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14803,7 +14803,7 @@ export namespace Prisma {
     managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
@@ -14830,7 +14830,7 @@ export namespace Prisma {
     managerId?: StringFieldUpdateOperationsInput | string
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    publicsId?: PropertyUpdatepublicsIdInput | string[]
     propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null

@@ -1,4 +1,6 @@
 import NotFoundException from "../errors/notfound.exception";
+import { getUrl } from "../helpers/cloudinary";
+import mapPublicIdsToUrls from "../helpers/mapperPublicId";
 import prisma from "../helpers/prisma";
 import ManagerValidation, { UpdateManagerType } from "../validations/manager.validation";
 import Validation from "../validations/validate";
@@ -94,15 +96,16 @@ export default class ManagerService {
                 highlights: true,
                 squareFeet: true,
                 securityDeposit: true,
-                photoUrls: true,
-
+                publicsId: true,
             },
         });
 
+        
         if (!properties) {
             throw new NotFoundException("No properties found for this manager");
         }
+        const  mappedProperties = mapPublicIdsToUrls(properties);
 
-        return properties;
+        return mappedProperties;
     }
 }

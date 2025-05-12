@@ -168,7 +168,7 @@ exports.Prisma.PropertyScalarFieldEnum = {
   managerId: 'managerId',
   amenities: 'amenities',
   highlights: 'highlights',
-  photoUrls: 'photoUrls',
+  publicsId: 'publicsId',
   propertyType: 'propertyType',
   averageRating: 'averageRating',
   numberOfReviews: 'numberOfReviews',
