@@ -27,7 +27,8 @@ export default class PropertyController{
     static async create (req:Request, res:Response, next:NextFunction){
         try {
             const data:CreatePropertyType = req.body;
-            data.paths = req.files.forEach((file: Express.Multer.File) => file.path);
+            const files = req.files as Express.Multer.File[];
+            data.paths = files.map((file: Express.Multer.File) => file.path);
             const result = await PropertyService.create(req.body);
             successResponse(res, result, "Property created successfully");
         } catch (error) {

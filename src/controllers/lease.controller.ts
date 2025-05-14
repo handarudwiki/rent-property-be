@@ -12,11 +12,10 @@ export default class LeaseController {
         }
     }
 
-    static async getById(req:Request, res:Response, next:NextFunction){
+    static async getLeasePayments(req:Request, res:Response, next:NextFunction){
         try {
-            const id = req.params.id;
-            const result = await LeaseService.getById(id);
-            successResponse(res, result, "Lease retrieved successfully");
+            const result = await LeaseService.getLeasePayment(req.params.id);
+            successResponse(res, result, "Lease payments retrieved successfully");
         } catch (error) {
             next(error);
         }

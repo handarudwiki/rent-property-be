@@ -80,7 +80,6 @@ export default class ApplicationService {
             }
         }
 
-
         const applications = await prisma.apllication.findMany({
             where: whereClause,
             select: {

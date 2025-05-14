@@ -5,7 +5,7 @@ import { generateToken } from "../helpers/jwt";
 import prisma from "../helpers/prisma";
 import AuthValidation, { SignupType } from "../validations/auth.validation";
 import Validation from "../validations/validate";
-import {hash} from "bcryptjs";
+import {hash, compare} from "bcryptjs";
 
 export default class AuthService {
     static async signUp (data:SignupType){
@@ -95,6 +95,12 @@ export default class AuthService {
                 throw new UnauthorizedException("Email or password is incorrect");
             }
 
+            const isPasswordMatch = await compare(validData.password, loggedInUser.password);
+
+            if (!isPasswordMatch) {
+                throw new UnauthorizedException("Email or password is incorrect");
+            }
+
             return generateToken(loggedInUser.id, role.manager);
 
         }else if (validData.role == role.tenant) {
@@ -105,6 +111,11 @@ export default class AuthService {
             });
 
             if (!loggedInUser) {
+                throw new UnauthorizedException("Email or password is incorrect");
+            }
+
+            const isPasswordMatch = await compare(validData.password, loggedInUser.password);
+            if (!isPasswordMatch) {
                 throw new UnauthorizedException("Email or password is incorrect");
             }
 
